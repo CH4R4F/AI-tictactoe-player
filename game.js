@@ -57,7 +57,7 @@ function checkWinner(board, player) {
 }
 function gameOver(gameWon) {
   for (let index of winCases[gameWon.index]) {
-    document.getElementById(index).style.backgroundColor = gameWon.player === charaf ? "#72e372" : "red";
+    document.getElementById(index).style.backgroundColor = gameWon.player === charaf ? "#72e372" : "#ff4c4c";
   }
   for (let i = 0; i < 9; i++) {
     squares[i].removeEventListener("click", setClick);
@@ -72,7 +72,7 @@ function bestSpot() {
 function checkTie() {
   if (board.every((i) => typeof i != "number")) {
     for (let i = 0; i < 9; i++) {
-      squares[i].style.backgroundColor = "#72e372";
+      squares[i].style.backgroundColor = "#ff9d55";
       squares[i].removeEventListener("click", setClick);
     }
     declareWinner("Tie Game!");
@@ -83,7 +83,7 @@ function checkTie() {
 
 function declareWinner(who) {
   document.querySelector(".result").style.display = "block";
-  document.querySelector(".result").innerHTML = who;
+  document.querySelector(".result p").innerHTML = who;
 }
 
 function emprySquares(b) {
@@ -139,5 +139,7 @@ function minimax(newBoard, player) {
 
   return moves[bestMove];
 }
+
+document.querySelector(".result button").addEventListener("click", startGame);
 
 // TODO: handle the case when the game is a tie and win at the same time
